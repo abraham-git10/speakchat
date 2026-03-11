@@ -59,14 +59,9 @@ public class RoloFrame extends JFrame implements KeyListener {
             }
         }).start();
         setResizable(false);
-        pack();
         r = true;
-        RoloPanel p = new RoloPanel(panelWidth, panelHeight);
-        Insets frameInsets = getInsets();
-        int frameWidth = panelWidth + (frameInsets.left + frameInsets.right);
-        int frameHeight = panelHeight + (frameInsets.top + frameInsets.bottom);
-        setPreferredSize(new Dimension(frameWidth, frameHeight));
-        cl.setListData(cla.toArray());
+        setLayout(null);
+        setPreferredSize(new Dimension(panelWidth, panelHeight));
         sp.setBounds(10, 50, 400, 600);
         cl.addListSelectionListener(e -> hn());
         add(sp);
@@ -192,9 +187,6 @@ public class RoloFrame extends JFrame implements KeyListener {
         sc.addKeyListener(this);
         dc.addKeyListener(this);
         c.addKeyListener(this);
-        setLayout(null);
-        add(p);
-        pack();
         setVisible(true);
         addKeyListener(this);
         setFocusable(true);
