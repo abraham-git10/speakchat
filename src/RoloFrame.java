@@ -13,7 +13,7 @@ public class RoloFrame extends JFrame implements KeyListener {
     ChatFrame cF;
     ArrayList<RoloContact> cla = new ArrayList<>();
     boolean r;
-    JList cl = new JList(cla.toArray());
+    JList<RoloContact> cl = new JList<>(cla.toArray(new RoloContact[0]));
     JScrollPane sp = new JScrollPane(cl, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     JLabel f = new JLabel("First Name:");
     JLabel l = new JLabel("Last Name:");
@@ -61,7 +61,7 @@ public class RoloFrame extends JFrame implements KeyListener {
         setResizable(false);
         r = true;
         setLayout(null);
-        setPreferredSize(new Dimension(panelWidth, panelHeight));
+        getContentPane().setPreferredSize(new Dimension(panelWidth, panelHeight));
         sp.setBounds(10, 50, 400, 600);
         cl.addListSelectionListener(e -> hn());
         add(sp);
@@ -187,6 +187,7 @@ public class RoloFrame extends JFrame implements KeyListener {
         sc.addKeyListener(this);
         dc.addKeyListener(this);
         c.addKeyListener(this);
+        pack();
         setVisible(true);
         addKeyListener(this);
         setFocusable(true);
@@ -201,7 +202,7 @@ public class RoloFrame extends JFrame implements KeyListener {
                 String[] info = c.split(",");
                 cla.add(new RoloContact(info[0], info[1], info[2], info[3]));
             }
-            cl.setListData(cla.toArray());
+            cl.setListData(cla.toArray(new RoloContact[0]));
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -238,7 +239,7 @@ public class RoloFrame extends JFrame implements KeyListener {
             cla.add(c);
             setAlphabetical();
             write(true);
-            cl.setListData(cla.toArray());
+            cl.setListData(cla.toArray(new RoloContact[0]));
             fi.setText("");
             li.setText("");
             pni.setText("");
@@ -255,7 +256,7 @@ public class RoloFrame extends JFrame implements KeyListener {
         pni.setText("");
         ai.setText("");
         cl.clearSelection();
-        cl.setListData(cla.toArray());
+        cl.setListData(cla.toArray(new RoloContact[0]));
     }
     public void saveC() {
         cla.get(cl.getSelectedIndex()).setl(li.getText());
@@ -272,7 +273,7 @@ public class RoloFrame extends JFrame implements KeyListener {
         s.setVisible(true);
         n.setVisible(true);
         setAlphabetical();
-        cl.setListData(cla.toArray());
+        cl.setListData(cla.toArray(new RoloContact[0]));
         write(true);
         r = true;
     }
@@ -290,7 +291,7 @@ public class RoloFrame extends JFrame implements KeyListener {
             s.setVisible(true);
             n.setVisible(true);
             setAlphabetical();
-            cl.setListData(cla.toArray());
+            cl.setListData(cla.toArray(new RoloContact[0]));
             write(true);
             r = true;
         }
@@ -306,7 +307,7 @@ public class RoloFrame extends JFrame implements KeyListener {
             s.setVisible(true);
             n.setVisible(true);
             setAlphabetical();
-            cl.setListData(cla.toArray());
+            cl.setListData(cla.toArray(new RoloContact[0]));
             write(true);
             r = true;
         }
